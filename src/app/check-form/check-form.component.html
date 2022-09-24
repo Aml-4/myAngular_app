@@ -1,0 +1,31 @@
+<div class="form-group">
+  <form [formGroup]="form" (ngSubmit)="confirm()">
+    <div >
+      <label>Full Name:</label>
+      <input class="form-control" name="name" formControlName="name" [(ngModel)]="name">
+    </div>
+    <div >
+      <label>Address:</label>
+      <input class="form-control" name="address" type="text" formControlName="address">
+    </div>
+    <div >
+      <label>Credit Card Number:</label>
+      <input class="form-control" name="creditCard" type="text" formControlName="creditCard">
+    </div>
+      <input type="submit" [disabled]="form.invalid" value="Submit" class="btn btn-primary" style="margin-top: 5px;">
+  </form>
+
+<div *ngIf="form.controls['name'].invalid && form.controls['name'].touched">
+  <p *ngIf="form.controls['name'].errors?.['required']">Please provide your name.</p>
+  <p *ngIf="form.controls['name'].errors?.['minlength']">Your name must be at least 3 characters long.</p>
+</div>
+<div *ngIf="form.controls['address'].invalid && form.controls['address'].touched">
+  <p *ngIf="form.controls['address'].errors?.['required']">Please provide your address.</p>
+  <p *ngIf="form.controls['address'].errors?.['minlength']">Your address must be at least 5 characters long.</p>
+</div>
+<div *ngIf="form.controls['creditCard'].invalid && form.controls['creditCard'].touched">
+  <p *ngIf="form.controls['creditCard'].errors?.['required']">Please provide your creditCard.</p>
+  <p *ngIf="form.controls['creditCard'].errors?.['minlength']">Your creditCard must be 16 characters long.</p>
+    <p *ngIf="form.controls['creditCard'].errors?.['maxlength']">Your creditCard must be 16 characters long.</p>
+</div>
+</div>

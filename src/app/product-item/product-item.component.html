@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row gy-3 my-3">
+        <div class="col-sm-6 col-md-3 ">
+            <div class="card gy-1 my-1" style="width: 18rem; text-align: center;">
+                <a routerLink="/product/{{product.id}}">
+                    <img src={{product.url}} class="card-img-top" alt={{product.name}} style="height:320px ;">
+                </a>
+                <div class="card-body form-group-sub">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <h5 class="card-title">{{product.price}}</h5>
+                </div>
+                <form #f="ngForm" (ngSubmit)="onSubmit(f.value.quantity, product)">
+                    <select style="background-color: rgb(241, 238, 238); height: 30px" name="quantity" ngModel min="1">
+                        <option value="" disabled>Choose a quantity</option>
+                        <option *ngFor="let quantity of quantities" [ngValue]="quantity">
+                            {{ quantity }}
+                        </option>
+                    </select>
+                    <br><br />
+                    <input class="btn btn-warning" type="submit" value="Add to cart">
+                    <br><br />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row gy-3 my-3" >
+        <div class="col-md-6">
+            <div class="cart-container" *ngFor="let item of CartItems">
+                <app-cart-item [cartItem]="item" (removeItem)="removeProduct($event)" (updateQuantity)="updateQuantity($event)"></app-cart-item>
+            </div>
+            <h2 *ngIf="total"  class="total" style="color: rgb(139, 181, 197);">
+                Total ${{ total }}
+            </h2>
+        </div>
+        <div class="col-md-6" *ngIf="total">
+            <app-check-form></app-check-form>
+        </div>
+    </div>
+    </div>
+    <br>
