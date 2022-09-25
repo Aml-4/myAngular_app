@@ -24,9 +24,12 @@ total : number;
     //return this.total;
   }
 
-  updateQuantity(item: Cart){
+  updateQuantity(item: Cart) {
+    console.log(item)
     let newQuantity = item.quantity;
     this.total = this.CartService.updateQuantity(item, newQuantity);
+    
   }
+  
 
 }

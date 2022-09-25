@@ -10,7 +10,7 @@
     </div>
     <div >
       <label>Credit Card Number:</label>
-      <input class="form-control" name="creditCard" type="text" formControlName="creditCard">
+      <input class="form-control" name="creditCard" type="number" formControlName="creditCard">
     </div>
       <input type="submit" [disabled]="form.invalid" value="Submit" class="btn btn-primary" style="margin-top: 5px;">
   </form>
@@ -25,7 +25,9 @@
 </div>
 <div *ngIf="form.controls['creditCard'].invalid && form.controls['creditCard'].touched">
   <p *ngIf="form.controls['creditCard'].errors?.['required']">Please provide your creditCard.</p>
-  <p *ngIf="form.controls['creditCard'].errors?.['minlength']">Your creditCard must be 16 characters long.</p>
-    <p *ngIf="form.controls['creditCard'].errors?.['maxlength']">Your creditCard must be 16 characters long.</p>
+  <p *ngIf="form.controls['creditCard'].errors?.['min']">Your creditCard must be 16 characters long.</p>
+  <p *ngIf="form.controls['creditCard'].errors?.['max']">Your creditCard must be 16 characters long.</p>
+
+
 </div>
 </div>

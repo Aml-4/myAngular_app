@@ -26,17 +26,10 @@ export class CartItemComponent implements OnInit {
     this.removeItem.emit(cartItem)
   }
 
-  updateQuantities(cartItem: Cart, event: any){
-    let newQuan = event.target.value;
-    let cart: Cart = {
-      id: cartItem.id,
-      name: cartItem.name,
-      price: cartItem.price,
-      url: cartItem.url,
-      description: cartItem.description,
-      quantity: newQuan
-    }
-    this.updateQuantity.emit(cart)
+  updateQuantitiesTwo(event: any) {
+    //console.log(this.cartItem)
+    this.updateQuantity.emit(this.cartItem)
+
   }
 
 }

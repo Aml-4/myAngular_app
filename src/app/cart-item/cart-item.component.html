@@ -5,7 +5,7 @@
     <div class="cart-item-details">
         <h2>{{ cartItem.name }}</h2>
         <p>${{ cartItem.price }}</p>
-        <p>Amount: <input class="number-input" type="number" min="1" value="{{ cartItem.quantity }}" (change)="updateQuantities(cartItem, $event)" ></p>
+        <p>Amount: <input class="number-input" type="number" min="1"[(ngModel)]="cartItem.quantity " (ngModelChange)="updateQuantitiesTwo($event)" ></p>
         <button (click)="removeProductItem(cartItem)" class="btn btn-danger">Remove Product</button>
     </div>
 </div>

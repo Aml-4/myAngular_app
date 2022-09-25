@@ -13,7 +13,7 @@ export class CartService {
       this.updateQuantity(cart, cart.quantity);
       alert("The New Quantity " + cart.name + " updated!")
     } else {
-      if(cart.quantity > 1){
+      if(cart.quantity >= 1){
         this.ProductIncart.push(cart);
         alert(cart.name + " Added To Your Cart");
       } else {
@@ -35,12 +35,14 @@ export class CartService {
     }
   }
   // 3- Update Quantity Of Product
-  updateQuantity(item: Cart, newQuan: number){
+  updateQuantity(item: Cart, newQuan: number) {
+    
     this.ProductIncart.forEach(i =>{
       if(i.id == item.id){
         i.quantity = newQuan;
       }
     })
+    console.log(this.ProductIncart)
     return this.totalPrice();
   }
 
@@ -48,6 +50,7 @@ export class CartService {
   totalPrice(): number {
     let total = 0;
     this.ProductIncart.forEach(p => total += (p.quantity * p.price));
+    //console.log(this.ProductIncart)
     return total;
   }
 
@@ -55,7 +58,8 @@ export class CartService {
   deleteCart(){
     return this.ProductIncart=[];
   }
-  removeProduct(cartItem: Cart){
+  removeProduct(cartItem: Cart) {
+    alert("you removed " + cartItem.name + " from your cart");
     return this.ProductIncart = this.ProductIncart.filter(item => item.id != cartItem.id);
   }
 
